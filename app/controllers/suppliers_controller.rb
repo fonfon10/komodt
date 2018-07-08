@@ -4,25 +4,21 @@ class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.json
   def index
-    @suppliers = Supplier.all
+    @q = Supplier.ransack(params[:q])
+    @suppliers = @q.result(distinct:true)
+
   end
 
-  # GET /suppliers/1
-  # GET /suppliers/1.json
   def show
   end
 
-  # GET /suppliers/new
   def new
     @supplier = Supplier.new
   end
 
-  # GET /suppliers/1/edit
   def edit
   end
 
-  # POST /suppliers
-  # POST /suppliers.json
   def create
     @supplier = Supplier.new(supplier_params)
 
@@ -37,8 +33,6 @@ class SuppliersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /suppliers/1
-  # PATCH/PUT /suppliers/1.json
   def update
     respond_to do |format|
       if @supplier.update(supplier_params)
@@ -51,8 +45,6 @@ class SuppliersController < ApplicationController
     end
   end
 
-  # DELETE /suppliers/1
-  # DELETE /suppliers/1.json
   def destroy
     @supplier.destroy
     respond_to do |format|
@@ -69,6 +61,6 @@ class SuppliersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supplier_params
-      params.require(:supplier).permit(:Name)
+      params.require(:supplier).permit(:name, :q)
     end
 end
