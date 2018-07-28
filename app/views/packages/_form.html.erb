@@ -1,0 +1,48 @@
+<%= form_with(model: package, local: true) do |form| %>
+  <% if package.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
+
+      <ul>
+      <% package.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product %>
+    <%= form.select(:product_id, @product)%>    
+    <%= link_to new_product_path do%>
+            <span class="fa fa-plus"> Product</span>
+          <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :barcode %>
+    <%= form.text_field :barcode, id: :package_barcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pkgsize %>
+    <%= form.number_field :pkgsize, id: :package_pkgsize %>
+  </div>
+
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.number_field :size, id: :package_size %>
+  </div>
+
+  <div class="field">
+    <%= form.label :unit %>
+    <%= form.select(:unit_id, @unit)%>    
+    <%= link_to new_unit_path do%>
+            <span class="fa fa-plus"> Unit</span>
+          <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

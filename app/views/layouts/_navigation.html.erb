@@ -6,6 +6,11 @@
     </div>
 
 
+    <div class="navbar-header">
+      <%= link_to "PriceEntries", price_entries_path, class: "navbar-brand", id: "logo" %>
+    </div>
+
+
 
 	<div class="dropdown">
 	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -14,41 +19,24 @@
 	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 	  	<%= link_to "Supplier", suppliers_path , class: "dropdown-item" %>
 	  	<%= link_to "Product", products_path , class: "dropdown-item" %>
+	  	<%= link_to "Package", packages_path , class: "dropdown-item" %>
 	  </div>
 	</div>
-	<div class="dropdown">
+
+
+<div class="dropdown">
 	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Package
+	    Misc
 	  </button>
 	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-	  	<%= link_to "Add", "#", class: "dropdown-item" %>
-	  	<%= link_to "Show All", "#", class: "dropdown-item" %>
+	  	<%= link_to "Categories", categories_path , class: "dropdown-item" %>
+	  	<%= link_to "SubCategories", sub_categories_path , class: "dropdown-item" %>
+	  	<%= link_to "Units", units_path , class: "dropdown-item" %>
+	  	<%= link_to "Distributors", distributors_path , class: "dropdown-item" %>
+	  	<%= link_to "SalesType", sale_types_path , class: "dropdown-item" %>
 	  </div>
 	</div>
 
-	<div class="dropdown">
-	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Product
-	  </button>
-	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-	  	<%= link_to "Add", "#", class: "dropdown-item" %>
-	  	<%= link_to "Show All", "#", class: "dropdown-item" %>
-	  </div>
-	</div>
-
-
-	<div class="dropdown">
-	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Suppliers
-	  </button>
-	  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-	  	<%= link_to "Add", new_supplier_path, class: "dropdown-item" %>
-	  	<%= link_to "Show All", suppliers_path, class: "dropdown-item" %>
-	  </div>
-	</div>
 
 
 

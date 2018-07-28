@@ -1,9 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @supplier.name %>
-</p>
 
-<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
-<%= link_to 'Back', suppliers_path %>
+
+<h1>Supplier: <%=@supplier.name %> 
+
+        <%= link_to edit_supplier_path(@supplier) do%>
+            <span class="fa fa-edit"></span>
+          <% end %>
+</h1>
+
+
+
+<table>
+  <thead>
+    <tr>
+
+      <th>Product Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+  <tbody>
+    <% @supps.each do |supps| %>
+      <tr>
+        <td><%= supps.name %></td>
+
+
+      </tr>
+    <% end %>
+  </tbody>
+
+
+</table>
+
+
+
+<%= link_to new_product_path do%>
+            <span class="fa fa-plus"> Product</span>
+          <% end %>

@@ -2,18 +2,56 @@
 
 <p>
   <strong>Supplier:</strong>
-  <%= @product.supplier_id %>
+  <%= @product.supplier.name %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Product Name:</strong>
   <%= @product.name %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category_id %>
+  <%= @product.category.name %>  /  
+  <strong>SubCategory:</strong>
+  <%= @product.sub_category.name %>
 </p>
+
+
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Barcode</th>
+      <th>Pkgsize</th>
+      <th>Size</th>
+      <th>Unit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @package_select.each do |package_select| %>
+      <tr>
+        <td><%= package_select.product.name %></td>
+        <td><%= package_select.barcode %></td>
+        <td><%= package_select.pkgsize %></td>
+        <td><%= package_select.size %></td>
+        <td><%= package_select.unit.name  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

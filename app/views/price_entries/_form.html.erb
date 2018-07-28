@@ -1,0 +1,48 @@
+<%= form_with(model: price_entry, local: true) do |form| %>
+  <% if price_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(price_entry.errors.count, "error") %> prohibited this price_entry from being saved:</h2>
+
+      <ul>
+      <% price_entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :package_id %>
+    <%= form.select(:package_id, @package)%>    
+  </div>
+
+
+  <div class="field">
+    <%= form.label :distributor_id %>
+    <%= form.select(:distributor_id, @distributor)%>    
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :price_entry_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sale_type_id %>
+    <%= form.select(:sale_type_id, @sale_type)%>    
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :expiration_date %>
+    <%= form.date_select :expiration_date, id: :price_entry_expiration_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

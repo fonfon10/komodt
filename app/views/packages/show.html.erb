@@ -1,0 +1,103 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @package.product.name %>
+</p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @package.barcode %>
+</p>
+
+<p>
+  <strong>Pkgsize:</strong>
+  <%= @package.pkgsize %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @package.size.to_s + " " + @package.unit.name  %>
+</p>
+
+
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Barcode</th>
+      <th>Pkgsize</th>
+      <th>Size</th>
+      <th>Unit</th>
+      <th>Price</th>
+      <th>Distributor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_entry_select.each do |price_entry_select| %>
+      <tr>
+        <td><%= price_entry_select.package.product.name %></td>
+        <td><%= price_entry_select.package.barcode %></td>
+        <td><%= price_entry_select.package.pkgsize %></td>
+        <td><%= price_entry_select.package.size %></td>
+        <td><%= price_entry_select.package.unit.name  %></td>
+        <td><%= price_entry_select.price  %></td>
+        <td><%= price_entry_select.distributor.name  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Distributor</th>
+      <th>Recent</th>
+      <th>Price Per <%= @package.unit.multiplier.to_s + @package.unit.name %></th>
+      <th>min</th>
+      <th>max</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_entry_distributor_id.each_with_index do |distributor_id, index| %>
+      <tr>
+
+
+
+        <td><%= @distributors[index].name %></td>
+        <td><%= number_to_currency(@price_entry_recent[index]) %></td>
+        <td><%= number_to_currency(@price_entry_recent[index] * @package.unit.multiplier / (@package.size * @package.pkgsize)) %></td>
+        <td><%= number_to_currency(@price_entry_recent[index]) %></td>
+        <td><%= number_to_currency(@price_entry_min[index]) %></td>
+        <td><%= number_to_currency(@price_entry_max[index]) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+
+    
+    
+
+
+
+
+<h2>Average Price: <%= number_to_currency(@price_entry_select_price_average) %></h2>
+
+
+
+<%= link_to 'Edit', edit_package_path(@package) %> |
+<%= link_to 'Back', packages_path %>

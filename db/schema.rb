@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180708173257) do
+ActiveRecord::Schema.define(version: 20180726023724) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -18,8 +18,48 @@ ActiveRecord::Schema.define(version: 20180708173257) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "distributors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "packages", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "barcode"
+    t.integer "pkgsize"
+    t.integer "size"
+    t.integer "unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "price_entries", force: :cascade do |t|
+    t.integer "package_id"
+    t.integer "distributor_id"
+    t.decimal "price"
+    t.date "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sale_type_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer "supplier_id"
+    t.string "name"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "sub_category_id"
+  end
+
+  create_table "sale_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_categories", force: :cascade do |t|
     t.string "name"
     t.integer "category_id"
     t.datetime "created_at", null: false
@@ -30,6 +70,13 @@ ActiveRecord::Schema.define(version: 20180708173257) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "multiplier"
   end
 
 end

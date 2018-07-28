@@ -4,24 +4,38 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @q = Product.ransack(params[:q])
+    @products = @q.result(distinct:true)
+
+    @next = "packages"
+    @previous = "suppliers"
+
+
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+
+    packages = Package.all
+    @package_select = @product.packages
+
   end
 
   # GET /products/new
   def new
     @product = Product.new
-    @suppliers = Supplier.all.map { |i| [i.name, i.id]}
-    @categories = Category.all.map { |i| [i.name, i.id]}.sort
+    @supplier = Supplier.all.map { |i| [i.name, i.id]}
+    @category = Category.all.map { |i| [i.name, i.id]}.sort
+    @sub_category = SubCategory.all.map { |i| [i.name, i.id]}.sort
 
   end
 
   # GET /products/1/edit
   def edit
+    @supplier = Supplier.all.map { |i| [i.name, i.id]}
+    @category = Category.all.map { |i| [i.name, i.id]}.sort
+    @sub_category = SubCategory.all.map { |i| [i.name, i.id]}.sort
   end
 
   # POST /products
@@ -72,6 +86,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:supplier_id, :name, :category_id)
+      params.require(:product).permit(:supplier_id, :name, :category_id, :sub_category_id, :q)
     end
 end

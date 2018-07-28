@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  package_id: 1
+  distributor_id: 1
+  price: 9.99
+  date_expirate: 2018-07-21
+
+two:
+  package_id: 1
+  distributor_id: 1
+  price: 9.99
+  date_expirate: 2018-07-21

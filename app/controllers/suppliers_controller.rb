@@ -6,10 +6,17 @@ class SuppliersController < ApplicationController
   def index
     @q = Supplier.ransack(params[:q])
     @suppliers = @q.result(distinct:true)
+    @next = "products"
+    @previous = ""
 
   end
 
   def show
+
+    products = Product.all
+    @supps = @supplier.products
+
+
   end
 
   def new

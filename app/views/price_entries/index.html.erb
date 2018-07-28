@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Price Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Supplier</th>
+      <th>Product</th>
+      <th>Package</th>
+      <th>Size</th>
+      <th>Units</th>
+      <th>Distributor</th>
+      <th>Price</th>
+      <th>Sale Type</th>
+      <th>Expiration Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @price_entries.each do |price_entry| %>
+      <tr>
+        <td><%= price_entry.package.product.supplier.name %></td>
+        <td><%= price_entry.package.product.name %></td>
+        <td><%= link_to price_entry.package.pkgsize, package_path(price_entry.package.id) %></td>
+        <td><%= link_to price_entry.package.size, package_path(price_entry.package.id) %></td>
+        <td><%= link_to price_entry.package.unit.name, package_path(price_entry.package.id)  %></td>
+        <td><%= price_entry.distributor.name %></td>
+        <td><%= price_entry.price %></td>
+        <td><%= price_entry.sale_type.name %></td>
+        <td><%= price_entry.expiration_date %></td>
+        <td><%= link_to 'showshow', price_entry %></td>
+        <td><%= link_to 'Edit', edit_price_entry_path(price_entry) %></td>
+        <td><%= link_to 'Destroy', price_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Price Entry', new_price_entry_path %>
