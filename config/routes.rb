@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   resources :sale_types
   resources :price_entries
   resources :distributors
@@ -8,5 +10,11 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
   resources :suppliers
+
+
+  root to: 'products#index'
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -2,4 +2,9 @@
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Back', products_path %>
+
+  <div>    
+    <%= link_to new_package_path do%>
+            <span class="fa fa-plus"> Package</span>
+    <% end %>
+  </div>

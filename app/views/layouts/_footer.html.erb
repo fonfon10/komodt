@@ -1,0 +1,32 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+
+  	<%if !@previous.blank? %>
+			<p><i class="arrow left"></i><i class="arrow left"></i><i class="arrow left"></i> <%= link_to @previous.capitalize, @previous %>  </p>
+
+		<% else %>
+			<p></p>		
+
+
+		<% end %>
+
+    <%if !@next.blank? %>
+
+   		<p><%= link_to @next.capitalize, @next %> <i class="arrow right"></i><i class="arrow right"></i><i class="arrow right"></i></p>
+
+    <% end %>
+
+
+
+
+
+
+
+</div>
+
+
+
+</nav>
+
+

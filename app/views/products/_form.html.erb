@@ -14,16 +14,22 @@
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :product_name %>
+
   </div>
 
 
   <div class="field">
     <%= form.label :supplier %>
     <%= form.select(:supplier_id, @supplier)%>    
+    <%= link_to new_supplier_path do%>
+            <span class="fa fa-plus"> Supplier</span>
+    <% end %>
   </div>
+
   <div class="field">
     <%= form.label :category %>
     <%= form.select(:category_id, @category)%>    
+  
   </div>
   <div class="field">
     <%= form.label :sub_category %>
@@ -35,4 +41,8 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
+
+
+
 <% end %>

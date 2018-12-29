@@ -19,27 +19,23 @@
           <div class="col-sm">
 
 
-            <%if !@previous.blank? %>
-              <<< <%= link_to @previous.capitalize, @previous %> <<<
-            <% end %>
-
-
           </div>
           <div class="col-sm">
             <%= yield %>
           </div>
           <div class="col-sm">
 
-            <%if !@next.blank? %>
-              >>> <%= link_to @next.capitalize, @next %> >>>
-            <% end %>
 
           </div>
         </div>
       </div>
 
-
 	  </div>
+
+
+    <%= render 'layouts/footer' %>
+
+
 
   </body>
 </html>

@@ -17,14 +17,23 @@
   <tbody>
     <% @packages.each do |package| %>
       <tr>
-        <td><%= package.product.name %></td>
+        <td><%= link_to package.product.name, package %></td>
         <td><%= package.barcode %></td>
         <td><%= package.pkgsize %></td>
         <td><%= package.size %></td>
         <td><%= package.unit.name  %></td>
-        <td><%= link_to 'Show', package %></td>
-        <td><%= link_to 'Edit', edit_package_path(package) %></td>
-        <td><%= link_to 'Destroy', package, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+       <td><%= link_to edit_package_path(package) do%>
+            <span class="fa fa-edit"></span>
+          <% end %>
+          </td>
+        <td><%= link_to package, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="fa fa-trash"></span>
+
+
+          <% end %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>

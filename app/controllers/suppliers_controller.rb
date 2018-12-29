@@ -1,13 +1,12 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
+  before_action :set_footer
 
   # GET /suppliers
   # GET /suppliers.json
   def index
     @q = Supplier.ransack(params[:q])
     @suppliers = @q.result(distinct:true)
-    @next = "products"
-    @previous = ""
 
   end
 
@@ -15,7 +14,6 @@ class SuppliersController < ApplicationController
 
     products = Product.all
     @supps = @supplier.products
-
 
   end
 
@@ -64,6 +62,11 @@ class SuppliersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_supplier
       @supplier = Supplier.find(params[:id])
+    end
+
+    def set_footer
+      @next = "products"
+      @previous = ""
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

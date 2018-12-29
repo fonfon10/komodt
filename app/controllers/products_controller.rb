@@ -1,25 +1,19 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_footer
 
   # GET /products
   # GET /products.json
   def index
     @q = Product.ransack(params[:q])
     @products = @q.result(distinct:true)
-
-    @next = "packages"
-    @previous = "suppliers"
-
-
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-
     packages = Package.all
     @package_select = @product.packages
-
   end
 
   # GET /products/new
@@ -28,7 +22,6 @@ class ProductsController < ApplicationController
     @supplier = Supplier.all.map { |i| [i.name, i.id]}
     @category = Category.all.map { |i| [i.name, i.id]}.sort
     @sub_category = SubCategory.all.map { |i| [i.name, i.id]}.sort
-
   end
 
   # GET /products/1/edit
@@ -82,6 +75,11 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+    end
+
+    def set_footer
+      @next = "packages"
+      @previous = "suppliers"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
