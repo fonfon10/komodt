@@ -1,5 +1,6 @@
 class PriceEntriesController < ApplicationController
   before_action :set_price_entry, only: [:show, :edit, :update, :destroy]
+  before_action :set_footer
 
   # GET /price_entries
   # GET /price_entries.json
@@ -38,6 +39,7 @@ class PriceEntriesController < ApplicationController
   # POST /price_entries.json
   def create
     @price_entry = PriceEntry.new(price_entry_params)
+    @price_entry.user = current_user
 
     respond_to do |format|
       if @price_entry.save
@@ -74,11 +76,21 @@ class PriceEntriesController < ApplicationController
     end
   end
 
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_price_entry
       @price_entry = PriceEntry.find(params[:id])
     end
+
+    def set_footer
+      @next = ""
+      @previous = "packages"
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def price_entry_params

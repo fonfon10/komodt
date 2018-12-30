@@ -20,13 +20,6 @@
 
 
 
-i {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-}
-
 .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
@@ -45,4 +38,35 @@ i {
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+}
+
+
+
+
+/* Navbar and navigation styles */
+
+.navbar {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+}
+
+.navbar-default {
+
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #84bce8;
+
+  .navbar-nav > li > a {
+    color: #FFF;
+  }
+
+  .navbar-link {
+    color: #FFF;
+  }
+
+  .navbar-brand {
+    color: #FFF;
+    letter-spacing: 1.25px;
+    font-size: 1em;
+  }
 }

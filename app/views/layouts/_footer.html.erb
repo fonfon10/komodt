@@ -3,7 +3,7 @@
 
 
   	<%if !@previous.blank? %>
-			<p><i class="arrow left"></i><i class="arrow left"></i><i class="arrow left"></i> <%= link_to @previous.capitalize, @previous %>  </p>
+			<p><i class="fas fa-angle-double-left"></i></i> <%= link_to @previous.capitalize, @previous %> <i class="fas fa-angle-double-left"></i></p>
 
 		<% else %>
 			<p></p>		
@@ -13,7 +13,7 @@
 
     <%if !@next.blank? %>
 
-   		<p><%= link_to @next.capitalize, @next %> <i class="arrow right"></i><i class="arrow right"></i><i class="arrow right"></i></p>
+   		<p><i class="fas fa-angle-double-right"></i> <%= link_to @next.capitalize, @next %> <i class="fas fa-angle-double-right"></i></p>
 
     <% end %>
 
